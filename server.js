@@ -81,7 +81,14 @@ app.post("/", async (req, res) => {
     const response = await openai.createCompletion({
       model: "text-davinci-003",
 
-      prompt: `I want you to act as a storyteller. You will come up with entertaining stories that are engaging, imaginative and captivating for the audience. It can be fairy tales, educational stories or any other type of stories which has the potential to capture people's attention and imagination. Depending on the target audience, you may choose specific themes or topics for your storytelling session e.g., if it's children then you can talk about animals; If it's adults then history-based tales might engage them better etc. My first request is: ${message}. The story should end with: ${storyEnding}. Here is a plot twist for you: ${storyPlotTwist}`,
+      prompt: `I want you to act as a storyteller. You will come up with entertaining stories that are engaging,
+ imaginative and captivating for the audience. It can be fairy tales,
+ educational stories or any other type of stories which has the potential to capture people's attention and imagination.
+ Depending on the target audience, you may choose specific themes or topics for your storytelling session e.g.,
+ if it's children then you can talk about animals; If it's adults then history-based tales might engage them better etc.
+ Never stop a story in the middle of a sentence, always put a period at the end of the story.
+ My first request is: ${message}. The story should end with: ${storyEnding}.
+ Here is a plot twist for you: ${storyPlotTwist}`,
       temperature: 0,
       max_tokens: 100,
       frequency_penalty: 0.4,
