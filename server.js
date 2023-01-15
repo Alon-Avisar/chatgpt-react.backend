@@ -201,7 +201,6 @@ app.get("/image", async (req, res) => {
       size: "512x512",
     });
     console.log(':response.data.data.url' ,response.data)
-    
     res.send(response.data);
   } catch (error) {
     console.error(error);
