@@ -79,28 +79,6 @@ app.post("/", async (req, res) => {
     const response = await openai.createCompletion({
       model: "text-davinci-003",
 
-      // prompt: `The following is a conversation with an AI assistant. The assistant is helpful, creative, clever, and very friendly.
-
-      // // Human: give me list of 3 rendome people?
-      // // AI: 1.bobi "n/"
-      //        2.lolo
-      //        3.koki?
-      // // Human:${message}.
-      // // AI:`,
-
-      // prompt: `The following is a conversation with an AI assistant. The assistant is helpful, creative, clever, and very friendly.
-      // You: What have you been up to?
-      // Friend: Watching old movies.
-      // You: Did you watch anything interesting?
-      // Friend: Yes, I watched a classic movie from the 50s called Rebel Without a Cause. It was really good!
-      // You:${message}
-      // Friend:`,
-
-      // prompt: ` want you to act as a smart domain name generator.
-      //  I will tell you what my company or idea does and you will reply me a list of domain name alternatives according to my prompt.
-      //   You will only reply the domain list, and nothing else. Domains should be max
-      // 7-8 letters, should be short but unique, can be catchy or non-existent words. Do not write explanations. Reply "OK" to confirm.`,
-
       prompt:` I want you to act as a storyteller. You will come
       up with entertaining stories that are
       engaging, imaginative and captivating for the
@@ -111,34 +89,10 @@ app.post("/", async (req, res) => {
       audience, you may choose specific themes or
       topics for your storytelling session e.g., if it’s
       children then you can talk about animals; If
-      it’s adults then history-based tales might
-      engage them better etc. My first request is:
+      it’s adults then history-based tales might engage them better etc.
+      if you find that you do not have enough tokens, consider making the story shorter.
+      My first request is:
        ${message}.`,
-
-      // prompt: `I am a highly intelligent question answering bot. If you ask me a question, I will give you the answer.
-
-      // Human: What is human life expectancy in the United States?
-      // Ai: Human life expectancy in the United States is 78 years.
-
-      // Human: Who was president of the United States in 1955?
-      // Ai: Dwight D. Eisenhower was president of the United States in 1955.
-
-      // Human: How to be rich -list of 5 thing?
-      // Ai: 1. Set goals and create a plan to achieve them. \n
-      //     2. Develop a positive attitude and mindset. \n
-      //     3. Take calculated risks. \n
-      //     4. Network and build relationships.\n
-      //    5. Develop multiple income streams. \n
-
-      // Human: How does a telescope work?
-      // Ai: Telescopes use lenses or mirrors to focus light and make objects appear closer.
-
-      // Human: Where were the 1992 Olympics held?
-      // Ai: The 1992 Olympics were held in Barcelona, Spain.
-
-      // Human:${message}?
-      // Ai:
-      // `,
 
       temperature: 0,
       max_tokens: 100,
