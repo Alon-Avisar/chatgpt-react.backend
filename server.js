@@ -90,7 +90,7 @@ app.post("/", async (req, res) => {
  My first request is: ${message}. The story should end with: ${storyEnding}.
  Here is a plot twist for you: ${storyPlotTwist}`,
       temperature: 0,
-      max_tokens: 100,
+      max_tokens: 120,
       frequency_penalty: 0.4,
       presence_penalty: 0.4,
       stop: ["n/"],
