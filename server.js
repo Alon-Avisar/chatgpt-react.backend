@@ -68,38 +68,27 @@ const configuration = new Configuration({
 });
 const openai = new OpenAIApi(configuration);
 
-// Set up route to handle POST requests
 app.post("/", async (req, res) => {
   try {
     // Get message from request body
     const { message, currentModel } = req.body;
     console.log("req:", message);
 
+    const storyEnding = "The prince and the princess lived happily ever after.";
+    const storyPlotTwist = "But just as they were about to kiss, the prince was revealed to be a frog under a spell.";
+
     // Call OpenAI API to generate completion for the message
     const response = await openai.createCompletion({
       model: "text-davinci-003",
 
-      prompt:` I want you to act as a storyteller. You will come
-      up with entertaining stories that are
-      engaging, imaginative and captivating for the
-      audience. It can be fairy tales, educational
-      stories or any other type of stories which has
-      the potential to capture people's attention
-      and imagination. Depending on the target
-      audience, you may choose specific themes or
-      topics for your storytelling session e.g., if it’s
-      children then you can talk about animals; If
-      it’s adults then history-based tales might engage them better etc.
-      if you find that you do not have enough tokens, consider making the story shorter.
-      My first request is:
-       ${message}.`,
-
+      prompt: `I want you to act as a storyteller. You will come up with entertaining stories that are engaging, imaginative and captivating for the audience. It can be fairy tales, educational stories or any other type of stories which has the potential to capture people's attention and imagination. Depending on the target audience, you may choose specific themes or topics for your storytelling session e.g., if it's children then you can talk about animals; If it's adults then history-based tales might engage them better etc. My first request is: ${message}. The story should end with: ${storyEnding}. Here is a plot twist for you: ${storyPlotTwist}`,
       temperature: 0,
       max_tokens: 100,
       frequency_penalty: 0.4,
       presence_penalty: 0.4,
       stop: ["n/"],
     });
+    
     // console.log("sdgsdgsd", response.data.choices[0].text);
     // Return response from OpenAI API
     res.json({
